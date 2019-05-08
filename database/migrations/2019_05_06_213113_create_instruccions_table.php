@@ -17,8 +17,8 @@ class CreateInstruccionsTable extends Migration
             $table->increments('id');
             $table->string('titulo_instruccion');
             $table->string('descripcion_instruccion');
-            $table->string('imagen_instruccion');
-            $table->string('video_instruccion');
+            $table->string('imagen_instruccion')->nullable();
+            $table->string('video_instruccion')->nullable();
             $table->timestamps();
         });
     }

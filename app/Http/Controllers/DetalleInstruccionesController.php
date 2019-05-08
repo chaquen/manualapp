@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Instruccion;
 
 
-class InstruccionesController extends Controller
+class DetalleInstruccionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,6 @@ class InstruccionesController extends Controller
     public function index()
     {
         //
-        return view('instrucciones.index');
     }
 
     /**
@@ -27,7 +26,6 @@ class InstruccionesController extends Controller
     public function create()
     {
         //
-        return view('instrucciones.crear');
     }
 
     /**
@@ -50,8 +48,6 @@ class InstruccionesController extends Controller
     public function show($id)
     {
         //
-        return view('instrucciones.detalle')
-                ->with('instrucciones',Instruccion::all());
     }
 
     /**

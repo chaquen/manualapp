@@ -1,10 +1,5 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        
-    </head>
-    <body>
-        
-        
-    </body>
-</html>
+@extends('layout.app')
+
+@section('contenido')
+<h1 class="text-red">Bienvenido a manualapp, una app para manuales </h1>
+@endsection
