@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstruccionsTable extends Migration
+class CreateMultimediaInstruccionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateInstruccionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('instruccions', function (Blueprint $table) {
+        Schema::create('multimedia_instrucciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo_instruccion');
-            $table->string('descripcion_instruccion');
+            $table->integer('id_instruccion');
+            $table->enum('tipo_multimedia_instruccion',['nota','video','imagen']);
+            $table->string('multimedia_instruccion');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateInstruccionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instruccions');
+        Schema::dropIfExists('multimedia_instrucciones');
     }
 }

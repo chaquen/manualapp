@@ -17,8 +17,6 @@ class CreateDetalleInstruccionsTable extends Migration
             $table->increments('id');
             $table->string('titulo_detalle_instruccion');
             $table->string('descripcion_detalle_instruccion');
-            $table->string('imagen_detalle_instruccion')->nullable();
-            $table->string('video_detalle_instruccion')->nullable();
             $table->integer('id_instruccion');
             $table->timestamps();
         });

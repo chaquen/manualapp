@@ -21,3 +21,7 @@
   font-size: 55px;
   color: green;
 }
+.text-responsive {
+  //font-size:2vw;
+  font-size:0.9em;
+}
