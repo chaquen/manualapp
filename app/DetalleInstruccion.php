@@ -18,4 +18,7 @@ class DetalleInstruccion extends Model
     public function detalles_de_la_instruccion(){
     	return $this->hasMany(DetalleMultimediaInstrucciones::class,'id_detalle_instruccion');
     }
+    public function multimedia_del_detalle_de_la_instruccion(){
+        return $this->hasMany(DetalleMultimediaInstrucciones::class,'id_detalle_instruccion');
+    }
 }

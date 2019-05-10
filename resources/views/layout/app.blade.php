@@ -7,18 +7,26 @@
         <title>{{config('app.name')}}</title>
     </head>
     <body>
+        <div class="container-fluid" >
+          <nav class="navbar navbar-expand-lg"  style="background-color: #f2f1fb; " >
+              
+              
+              <a class="navbar-brand" href="http://metalbit.co/core">
+                          <img class="logo" src="http://localhost/metalbit/public/img/AzulMetalicoHor_logo.png">
+              </a>
+
+              <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link text-blue" href="http://metalbit.co/core">Ver anuncios <span class="sr-only">(current)</span></a>
+                  </li>
+                 
+                  
+              </ul>
+          </nav>    
+             
+        </div>
         
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-             <a class="nav-link active" href="{{route('instrucciones.show',[1])}}">Vea las instrucciones</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{{route('instrucciones.create')}}">Crear</a>
-          </li>
-          
-        </ul>
-        
-        <div class="row col-sm-12" style="height: 1000px;">
+        <div class="row col-12" style="height: 1000px; ">
             @yield('contenido')                    
         </div>
         
