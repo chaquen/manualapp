@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('instrucciones','InstruccionesController');
-
+Route::post('subir_imagenes','InstruccionesController@subir_imagenes');
 
 /*
 Route::get('/ver_instrucciones', function () {
