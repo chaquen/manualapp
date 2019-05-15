@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MultimediaInstrucciones;
 use App\Instruccion;
 
 
@@ -16,7 +17,8 @@ class InstruccionesController extends Controller
     public function index()
     {
         //
-        return view('instrucciones.index');
+       return view('instrucciones.detalle')
+                ->with('instrucciones',Instruccion::all());
     }
 
     /**
@@ -39,6 +41,19 @@ class InstruccionesController extends Controller
     public function store(Request $request)
     {
         //
+        $id=Instruccion::insertGetId(["titulo_instruccion"=>$request->input('titulo_instruccion'),"descripcion_instruccion"=>$request->input('descripcion_instruccion')]);
+        foreach ($request->input('lista_archivos') as $key => $ruta) {
+            MultimediaInstrucciones::create(['tipo_multimedia_instruccion'=>'imagen','id_instruccion'=>$id,'multimedia_instruccion'=>$ruta]);
+        }
+        if($request->input('video')!=false){
+
+
+            MultimediaInstrucciones::create(['tipo_multimedia_instruccion'=>'video','id_instruccion'=>$id,'multimedia_instruccion'=>$request->input('url_video')]);
+
+        }
+
+        return response()->json(["id"=>$id]);
+
     }
 
     /**
@@ -88,54 +103,31 @@ class InstruccionesController extends Controller
         //
     }
 
-    public function subir_imagenes(){
+    public function subir_imagenes(Request $request){
         //ini
          $url=$request->file('file');
-
+         //aqui solo se debe mover a la carpeta, la asociacion se hara cuando el usuariod e guardar
         
-        $filename = $request->file('file')->move('archivos/');
+        if(config('app.debug')){
+            $filename = $request->file('file')->move('archivos/manual_metal_bit');
 
-        $newname="/archivoexcel.".explode(".",$_FILES['file']['name'])[1];
-
-        rename($filename,realpath(dirname($filename)).$newname);
-        $datos=ControlProceso::obtener_datos_archivo($newname);
-       
-        $i=0;
-        $rep=0;
-        foreach($datos as $d ){
-            //dump($d);
-            $fecha=array_reverse(explode("-",explode("\n",$d[9])[1]));
             
-            $fecha=ControlProceso::validar_fecha($fecha);
-            $pro=ControlProceso::where('link_proceso',$d[2])->get();
-            if(count($pro)==0){
-                ControlProceso::create([
-                    'numero_proceso'=>$d[1],
-                    'link_proceso'=>$d[2],
-                    'tipo_proceso'=>$d[3],
-                    'estado_proceso'=>$d[4],
-                    'entidad'=>$d[5],
-                    'objeto'=>$d[6],
-                    'dpto_ciudad'=>$d[7],
-                    'cuantia'=>explode('$',$d[8])[1],
-                    'fecha_apertura'=>implode('-',$fecha),
-                    'id_usuario_asignado'=>$request['usuario'],
-                    'id_empresa'=>$request['empresa'],                
-                    
-                ]);
-                $i++;
-            }else{
-                $rep++;
-            }
-             
+            dump($filename,realpath(dirname($filename))."/".$_FILES['file']['name']);
+            rename($filename,realpath(dirname($filename))."/".$_FILES['file']['name']);
         }
-        $msn="";
-        if($rep>0){
-            $msn=" y se identificaron ".$rep." procesos repetidos los cuales no se agregaron al sistema.";
-        }else{
-            $msn=".";
-        }
-        return  response()->json(['respuesta'=>true,'mensaje'=>'Se han agregado ']);
+        
+        $ruta="manual_metal_bit/".$_FILES['file']['name'];
+        
+
+        return  response()->json(['respuesta'=>true,'mensaje'=>'Se ha agregado una imagen',"ruta"=>$ruta]);
+        
         //end
+    }
+
+    
+
+    public function lista_instrucciones(){
+        
+        return  response()->json(Instruccion::all());
     }
 }

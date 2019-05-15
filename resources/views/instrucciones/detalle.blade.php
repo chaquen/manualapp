@@ -5,7 +5,7 @@
 <div class="col-sm-3 " id="top_menu">
 
 	 
-	<ul class="list-group sticky-top">
+	<ul class="list-group sticky-top" style="overflow-y: auto; height: 600px" >
 	  <li class="list-group-item active"><i class="fa fa-book text-warning"></i> ¿Ahora que hago?</li>	
 	  	
 	  @forelse($instrucciones as $i)
@@ -21,7 +21,7 @@
 			        <a data-toggle="collapse" href="#collapse_a"><b>{{$i->titulo_instruccion}}</b></a>
 			      </h6>
 			    </div>
-			    <div id="collapse_a" class="panel-collapse collapse">
+			    <div id="collapse_a" class="panel-collapse collapse"  >
 			      <ul class="list-group">
 			      
 			      	@foreach($i->detalles_de_la_instruccion as $im)
@@ -53,7 +53,7 @@
 		@include('instrucciones.info_detalle')	
 	 </div>		
 	@empty
-		<h1 class="text-red">No existe información registrada en la base de datos</h1>>
+		<h1 class="text-red">No existe información registrada en la base de datos</h1>
 	@endforelse		
 	<div class="col-12 col-md-12" style="height: 50px; margin-top: 20px">
            @include('partials.logo')   

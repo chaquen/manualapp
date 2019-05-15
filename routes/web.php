@@ -11,12 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','InstruccionesController@index');
 Route::resource('instrucciones','InstruccionesController');
-Route::post('subir_imagenes','InstruccionesController@subir_imagenes');
 
+Route::resource('detalle_instrucciones','DetalleInstruccionesController');
+
+Route::post('subir_imagenes_instrucciones','InstruccionesController@subir_imagenes');
+Route::post('subir_imagenes_idetalles','InstruccionesController@subir_imagenes');
+Route::post('agregar_video_instruccion/{id}','InstruccionesController@agregar_video_instruccion');
+Route::get('lista_instrucciones','InstruccionesController@lista_instrucciones');
 /*
 Route::get('/ver_instrucciones', function () {
     return view('instrucciones.index');

@@ -8,8 +8,7 @@ class Instruccion extends Model
 {
     //
      protected $fillable = [
-        'titulo_instruccion', 'descripcion_instruccion', 'imagen_instruccion',
-        'video_instruccion'
+        'titulo_instruccion', 'descripcion_instruccion'
     ];
 
     

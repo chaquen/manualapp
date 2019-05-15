@@ -8,7 +8,7 @@ class DetalleInstruccion extends Model
 {
     //
     protected $fillable = [
-        'titulo_detalle_instruccion', 'descripcion_detalle_instruccion', 'imagen_detalle_instruccion','video_detalle_instruccion','id_instruccion'
+        'titulo_detalle_instruccion', 'descripcion_detalle_instruccion','id_instruccion'
     ];
 
     public function instruccion(){

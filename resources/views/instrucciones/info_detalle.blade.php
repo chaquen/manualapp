@@ -13,7 +13,7 @@
 		  <div class="card-body">
 		      	<!--CARROUSEL INSTRUCCIONES-->
 					<div class="col-sm-12" >
-						<div id="carousel{{$i->id}}" class="carousel slide" data-ride="carousel" style="height: 325px">
+						<div id="carousel{{$i->id}}" class="carousel slide" data-ride="carousel" style="height: 600px">
 						  <ol class="carousel-indicators">
 						    <li data-target="#carousel{{$i->id}}" data-slide-to="0" class="active"></li>
 						    <li data-target="#carousel{{$i->id}}" data-slide-to="1"></li>
@@ -27,7 +27,12 @@
 						  		@if($m->tipo_multimedia_instruccion == "imagen"  )
 						  			
 						  			<div class="carousel-item {{$active = $k == 0 ? 'active' : ''}}" >
-								      <img class="d-block w-100" height="340px" src="{{asset($m->multimedia_instruccion)}}" alt="{{config('app.name')}}">
+								      <img class="d-block w-100" height="540px" src="{{asset('archivos/'.$m->multimedia_instruccion)}}" alt="{{config('app.name')}}">
+								      <!--<div class="carousel-caption d-none d-md-block">
+									    <h5 class="text-info">{{$i->titulo_instruccion}}</h5>
+									    <p class="text-info">{{$i->descripcion_instruccion}}</p>
+									  </div>-->
+								      
 								    </div>
 								    
 						  		@endif
