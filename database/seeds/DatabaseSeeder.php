@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Manual;
 use App\Instruccion;
 use App\DetalleInstruccion;
 use App\MultimediaInstrucciones;
@@ -17,9 +18,14 @@ class DatabaseSeeder extends Seeder
     {
          //$this->call(UsersTableSeeder::class);
          //
+
+        Manual::truncate();
+
+        $idm=Manual::insertGetId(['nombre_manual'=>"metalbit",'logo_manual'=>'AzulMetalicoHor_logo.png','carpeta'=>'archivos/manual_metal_bit','url_app'=>'http://metalbit.co/core']);
         Instruccion::truncate();
         $ins1=Instruccion::insertGetId(['titulo_instruccion'=>'Ingresar a la app',
-        					 'descripcion_instruccion'=>'Debes accedes a el link metalbit.co/core']);
+        					 'descripcion_instruccion'=>'Debes accedes a el link metalbit.co/core',
+                              'id_manual'=>$idm]);
         					 
         MultimediaInstrucciones::create([
                 'id_instruccion'=>$ins1,
@@ -28,7 +34,7 @@ class DatabaseSeeder extends Seeder
                 );
 
         $ins2=Instruccion::insertGetId(['titulo_instruccion'=>'Registro a la app',
-        					 'descripcion_instruccion'=>'Debes accedes a el link metalbit.co/core/register']);
+        					 'descripcion_instruccion'=>'Debes accedes a el link metalbit.co/core/register','id_manual'=>$idm]);
 
         MultimediaInstrucciones::create(['id_instruccion'=>$ins2,
                 'tipo_multimedia_instruccion'=>'imagen'

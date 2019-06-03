@@ -8,7 +8,7 @@ class Instruccion extends Model
 {
     //
      protected $fillable = [
-        'titulo_instruccion', 'descripcion_instruccion'
+        'titulo_instruccion', 'descripcion_instruccion','id_manual'
     ];
 
     
@@ -20,5 +20,8 @@ class Instruccion extends Model
     	return $this->hasMany(MultimediaInstrucciones::class,'id_instruccion');
     }
 
-    
+    public function manual(){
+        return $this->belongsTo(Manual::class,'id');
+    }
+
 }

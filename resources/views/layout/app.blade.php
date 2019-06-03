@@ -11,21 +11,7 @@
     </head>
     <body>
         <div class="container-fluid" >
-          <nav class="navbar navbar-expand-lg"  style="background-color: #f2f1fb; " >
-              
-              
-              <a class="navbar-brand" href="http://metalbit.co/core">
-                          <img class="logo" src="http://localhost/metalbit/public/img/AzulMetalicoHor_logo.png">
-              </a>
-
-              <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link text-blue" href="http://metalbit.co/core">Ver anuncios <span class="sr-only">(current)</span></a>
-                  </li>
-                 
-                  
-              </ul>
-          </nav>    
+          @yield('nav')    
              
         </div>
         

@@ -1,5 +1,8 @@
 @extends('layout.app')
-
+@section('nav')
+            
+     
+@endsection
 @section('contenido')
 
 <h1>Aqui crearas tus instrucciones </h1>

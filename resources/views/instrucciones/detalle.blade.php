@@ -1,5 +1,24 @@
 @extends('layout.app')
 
+@section('nav')
+            
+			<nav class="navbar navbar-expand-lg"  style="background-color: #f2f1fb; " >
+              
+              
+              <a class="navbar-brand" href="{{$instrucciones[0]->manual->url}}">
+                          <img class="logo" src="{{config('app.url') }}/{{$instrucciones[0]->manual->carpeta}}/{{$instrucciones[0]->manual->logo_manual}}">
+              </a>
+
+              <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link text-blue" href="{{$instrucciones[0]->manual->url}}">Ver anuncios <span class="sr-only">(current)</span></a>
+                  </li>
+                 
+                  
+              </ul>
+           </nav>
+@endsection
+
 @section('contenido')
 <!--DIV NAV LATERAL-->
 <div class="col-sm-3 " id="top_menu">

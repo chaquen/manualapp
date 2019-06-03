@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MultimediaInstrucciones;
+use App\Manual;
 use App\Instruccion;
 
 
@@ -41,7 +42,11 @@ class InstruccionesController extends Controller
     public function store(Request $request)
     {
         //
-        $id=Instruccion::insertGetId(["titulo_instruccion"=>$request->input('titulo_instruccion'),"descripcion_instruccion"=>$request->input('descripcion_instruccion')]);
+        //consulta los manuales
+        $m=Manual::all();
+
+
+        $id=Instruccion::insertGetId(["titulo_instruccion"=>$request->input('titulo_instruccion'),"descripcion_instruccion"=>$request->input('descripcion_instruccion'),'id_manual'=>$m[0]->id]);
         foreach ($request->input('lista_archivos') as $key => $ruta) {
             MultimediaInstrucciones::create(['tipo_multimedia_instruccion'=>'imagen','id_instruccion'=>$id,'multimedia_instruccion'=>$ruta]);
         }

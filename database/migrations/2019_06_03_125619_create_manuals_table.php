@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstruccionsTable extends Migration
+class CreateManualsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateInstruccionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('instruccions', function (Blueprint $table) {
+        Schema::create('manuals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_manual');
-            $table->string('titulo_instruccion');
-            $table->string('descripcion_instruccion');
+            $table->string('nombre_manual');
+            $table->string('logo_manual');
+            $table->string('carpeta');
+            $table->string('url_app');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateInstruccionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instruccions');
+        Schema::dropIfExists('manuals');
     }
 }
