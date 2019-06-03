@@ -9,33 +9,33 @@ Pasos para su instalación localmente.
 
 ## Paso 1. Clonar repositorio
   
-  git clone https://github.com/chaquen/manualapp.git
+    git clone https://github.com/chaquen/manualapp.git
 
 ## Paso 2. Intalar paquetes
   
-  composer install
+    composer install
 
 ## Paso 3. Crear archivo .env 
 
 ## Paso 4. Crear key del proyecto
    
-   php artisan key:generate
+    php artisan key:generate
 
 ## Paso 5. Dar permisos a las carpetas storage y storage/logs (solo linux)
 	
-   sudo chmod 777 -R storage	
+    sudo chmod 777 -R storage	
 
-   cd storage	
+    cd storage	
 	
-   sudo chmod 777 -R logs
+    sudo chmod 777 -R logs
 
-   cd ..	
+    cd ..	
 
 ## Paso 6. Cree la base de datos
 
 ## Paso 7. Ejecuta las migraciones
 	
-  php artisan migrate --seed
+   php artisan migrate --seed
 
    
 
