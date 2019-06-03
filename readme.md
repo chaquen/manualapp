@@ -35,7 +35,7 @@ Pasos para su instalación localmente.
 
 ## Paso 7. Ejecuta las migraciones
 	
-   php artisan migrate --seed
+    php artisan migrate --seed
 
    
 
